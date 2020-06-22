@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Google Search Results Scraper</title>
     </head>
+
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+
+    <!-- Compressed JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    
     <body>
-        <h1>Google Search Results Scraper</h1>
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <h3>Google Search Results Scraper</h3>
+            </div>
+        </div>
+
         <form method="POST" enctype="multipart/form-data" action="/scrape">
             <p><input type="text" name="searchTerm" placeholder="Query">
-            <p><input type="text" name="countryCode" placeholder="Country Code(com, jp, kr...)">
-            <p><input type="text" name="languageCode" placeholder="Language Code(en, jp, kr...)">
-            <p><button type="submit">Search & Download</button>
+            <p><input type="text" name="countryCode" placeholder="Country Code(us, jp, kr...)">
+            <p><button type="submit" class="success button">Search & Download</button>
+                
+        <!-- Anchors (links) -->
+        <a target="_blank" href="https://github.com/linglingapp/googling" class="button">How To</a>
+        <div class="callout primary">
+            <h5>検索しすぎるとGoogleに怒られます。</h5>
+            <p>すぐ終わるので，しばらくお待ちください。</p>
+            <p>作成者；<a href="https://github.com/linglingapp">Seo Mincheol</a></p>
+        </div>
     </body>
 </html>
