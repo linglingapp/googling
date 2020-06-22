@@ -17,8 +17,7 @@ func handleScrape(c echo.Context) error {
 	defer os.Remove(fileName)
 	searchTerm := c.FormValue("searchTerm")
 	countryCode := c.FormValue("countryCode")
-	languageCode := c.FormValue("languageCode")
-	googlescraper.GoogleScrape(searchTerm, countryCode, languageCode)
+	googlescraper.GoogleScrape(searchTerm, countryCode)
 	return c.Attachment(fileName, fileName)
 }
 
