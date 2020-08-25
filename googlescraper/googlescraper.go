@@ -155,11 +155,11 @@ func GoogleScrape(searchTerm string, countryCode string) ([]GoogleResult, error)
 
 	var scrapes4 []GoogleResult
 	var scrapes5 []GoogleResult
-	fmt.Println(scrapes5)
+
 	if newUrl != "" {
 		// 2ページ目がある場合，新しいURLを生成。
 		googleNewUrl := buildNextGoogleUrl(countryCode, newUrl)
-		fmt.Println("Page 2:", googleNewUrl)
+		fmt.Println("New Page(Google):", googleNewUrl)
 		res2, err := googleRequest(googleNewUrl)
 		time.Sleep(2 * time.Second) // sleep
 		if err != nil {
@@ -171,7 +171,7 @@ func GoogleScrape(searchTerm string, countryCode string) ([]GoogleResult, error)
 		time.Sleep(2 * time.Second) // sleep
 
 		googleNewUrlLast := buildNextGoogleUrl(countryCode, newUrl)
-		fmt.Println("Page 3:", googleNewUrlLast)
+		fmt.Println("New Page(Google):", googleNewUrlLast)
 		res3, err := googleRequest(googleNewUrlLast)
 		time.Sleep(2 * time.Second) // sleep
 		if err != nil {
@@ -194,25 +194,25 @@ EXIT:
 	w := csv.NewWriter(file)
 	defer w.Flush()
 
-	headers := []string{"TITLE", "LINK", "SNIPPET"}
+	headers := []string{"LINK", "TITLE", "SNIPPET"}
 
 	wErr := w.Write(headers)
 	checkErr(wErr)
 
 	for _, searchResult := range scrapes {
-		searchResultSlice := []string{searchResult.ResultTitle, searchResult.ResultURL, searchResult.ResultDesc}
+		searchResultSlice := []string{searchResult.ResultURL, searchResult.ResultTitle, searchResult.ResultDesc}
 		srErr := w.Write(searchResultSlice)
 		checkErr(srErr)
 	}
 
 	for _, searchResult2 := range scrapes4 {
-		searchResultSlice2 := []string{searchResult2.ResultTitle, searchResult2.ResultURL, searchResult2.ResultDesc}
+		searchResultSlice2 := []string{searchResult2.ResultURL, searchResult2.ResultTitle, searchResult2.ResultDesc}
 		srErr := w.Write(searchResultSlice2)
 		checkErr(srErr)
 	}
 
 	for _, searchResult3 := range scrapes5 {
-		searchResultSlice3 := []string{searchResult3.ResultTitle, searchResult3.ResultURL, searchResult3.ResultDesc}
+		searchResultSlice3 := []string{searchResult3.ResultURL, searchResult3.ResultTitle, searchResult3.ResultDesc}
 		srErr := w.Write(searchResultSlice3)
 		checkErr(srErr)
 	}
