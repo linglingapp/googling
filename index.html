@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Google & Bing Search Results Scraper</title>
+        <link rel="stylesheet" href="css/foundation.css">
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    
+    <body>
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <h4>Google & Bing Search Results Scraper</h4>
+            </div>
+        </div>
+
+        <!-- Google search -->
+        <div class="align-center align-spaced">
+            <form method="POST" enctype="multipart/form-data" action="/googlescrape">
+                <div class="grid-x grid-padding-x">
+                    <div class="medium-8 cell">
+                        <label>検索語句（演算子検索も可能）
+                            <input type="text" id="left-label" name="searchTerm" placeholder="Query">
+                        </label>
+                    </div>
+                    <div class="medium-4 cell">
+                        <label>地域コード（入力しないと com で検索）
+                            <input type="text" name="countryCode" placeholder="Country Code(us, jp, kr, pt...)">
+                        </label>
+                    </div>
+                    <div class="medium-8 cell">
+                        <button type="submit" class="button expanded">Googling</button>
+                    </div>
+                    <div class="medium-4 cell">
+                        <a target="_blank" href="https://bit.ly/3eXDh2U" class="button warning expanded">Google Scraperのソースコード</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Bing search -->
+        <div class="align-center align-spaced">
+            <form method="POST" enctype="multipart/form-data" action="/bingscrape">
+                <div class="grid-x grid-padding-x">
+                    <div class="medium-8 cell">
+                        <label>検索語句（演算子検索も可能）
+                            <input type="text" id="left-label" name="searchTerm" placeholder="Query">
+                        </label>
+                    </div>
+                    <div class="medium-4 cell">
+                        <label>地域コード（入力しないと com で検索）
+                            <input type="text" name="countryCode" placeholder="Country Code(fr, de, hk, jp, kr, us...)">
+                        </label>
+                    </div>
+                    <div class="medium-8 cell">
+                        <button type="submit" class="success button expanded">Bing</button>
+                    </div>
+                    <div class="medium-4 cell">
+                        <a target="_blank" href="https://github.com/linglingapp/googling" class="button warning expanded">Bing Scraperのソースコード</a>
+                    </div>
+                </div>
+            </form>
+        </div>    
+
+        <!-- Tabs HTML Markup -->
+        <ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" id="example-tabs">
+            <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">注意事項</a></li>
+            <li class="tabs-title"><a href="#panel2">Google Scraper</a></li>
+            <li class="tabs-title"><a href="#panel3">Bing Scraper</a></li>
+            <li class="tabs-title"><a href="#panel4">地域コード（Google）</a></li>
+            <li class="tabs-title"><a href="#panel5">地域コード（Bing）</a></li>
+            <li class="tabs-title"><a href="#panel6">作成者</a></li>
+        </ul>
+          
+          <div class="tabs-content" data-tabs-content="example-tabs">
+            <div class="tabs-panel is-active" id="panel1">
+                <h5>Google，そして，Bingのサーバーに負荷をかけすぎないようにしましょう。</h5>
+                <p>短時間，集中的に検索をすると，Googleに怒られます。Bingは，Googleに比べると寛大ですし，検索結果も多いです。なお，GoogleとBingにおける検索結果を同時にダウンロードすることはできません。どちらか一方の作業が終わるまで，少しお待ちください。</p>
+            </div>
+            <div class="tabs-panel" id="panel2">
+              <p>Googleでの検索結果を1ページに100件表示し，タイトル・URL・スニペットを収集します。</p>
+            </div>
+            <div class="tabs-panel" id="panel3">
+              <p>Bingでの検索結果から，タイトル・URL・スニペットを収集します。Googleとは異なり，1ページに最大表示可能な検索件数は，現在（2020年7月2日）50件です。また，この件数は地域によっても異なります（e.g. ドイツは50件，日本は20件）。そして，URL操作で検索件数を変えることはできませんので，10件ずつ収集します。変更方法をご存知の方は，お教えください。</p>
+            </div>
+            <div class="tabs-panel" id="panel4">
+              <p>us: USA, jp: Japan, uk: United Kingdom, es: Spain, ca: Canada, de: Deutschland, it: Italia, fr: France, au: Australia, tw: Taiwan, nl: Nederland, br: Brasil, tr: Turkey, be: Belgium, gr: Greece, in: India, mx: Mexico, dk: Denmark, ar: Argentina, ch: Switzerland, cl: Chile, at: Austria, kr: Korea, ie: Ireland, co: Colombia, pl: Poland, pt: Portugal, pk: Pakistan</p>
+            </div>
+            <div class="tabs-panel" id="panel5">
+              <p>ar: Argentina, au: Australia, at: Austria, be: Belgium, br: Brazil, ca: Canada, cl: Chile, dk: Denmark, fi: Finland, fr: France, de: Germany, hk: Hong Kong SAR, in: India, id: Indonesia, it: Italy, jp: Japan, kr: Korea, my: Malaysia, mx: Mexico, nl: Netherlands, nz: New Zealand, no: Norway, cn: China, pl: Poland, pt: Portugal, ph: Philippines, ru: Russia, sa: Saudi Arabia, za: South Africa, es: Spain, se: Sweden, ch: Switzerland, tw: Taiwan, tr: Turkey, gb: United Kingdom, us: United States</p>
+            </div>
+            <div class="tabs-panel" id="panel6">
+              <p><a target="_blank" href="https://www.notion.so/Seo-Mincheol-443d8836ffe0458f955299a094815d02">Seo Mincheol。</a>このプロジェクトは，何の補助も受けていません。</p>
+              <img class="thumbnail" src="https://live.staticflickr.com/7378/12020983925_8062d234a9_w.jpg" alt="volunteer">
+            </div>
+          </div>    
+
+    <footer>
+    <div style="text-align: center;">
+        <p><small>Copyright &copy;2020 Seo Mincheol, All Rights Reserved.</small></p>
+    </div>
+    </footer>
+    <!-- JS -->
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.min.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    </body>
+</html>

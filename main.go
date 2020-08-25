@@ -1,7 +1,8 @@
 package main
 
 import (
-	"hello/googlescraper"
+	"bingscraper"
+	"googlescraper"
 	"os"
 
 	"github.com/labstack/echo"
@@ -10,10 +11,10 @@ import (
 const fileName string = "results.csv"
 
 func handleHome(c echo.Context) error {
-	return c.File("home.html")
+	return c.File("index.html")
 }
 
-func handleScrape(c echo.Context) error {
+func handleGoogleScrape(c echo.Context) error {
 	defer os.Remove(fileName)
 	searchTerm := c.FormValue("searchTerm")
 	countryCode := c.FormValue("countryCode")
@@ -21,9 +22,18 @@ func handleScrape(c echo.Context) error {
 	return c.Attachment(fileName, fileName)
 }
 
+func handleBingScrape(c echo.Context) error {
+	defer os.Remove(fileName)
+	searchTerm := c.FormValue("searchTerm")
+	countryCode := c.FormValue("countryCode")
+	bingscraper.BingScrape(searchTerm, countryCode)
+	return c.Attachment(fileName, fileName)
+}
+
 func main() {
 	e := echo.New()
 	e.GET("/", handleHome)
-	e.POST("/scrape", handleScrape)
+	e.POST("/googlescrape", handleGoogleScrape)
+	e.POST("/bingscrape", handleBingScrape)
 	e.Logger.Fatal(e.Start(":1323"))
 }
